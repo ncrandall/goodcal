@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'devise', '2.2.3'
 gem 'rails', '3.2.12'
+gem 'bootstrap-sass', '2.3.0.1' 
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -20,6 +22,13 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'capybara'
+end
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
