@@ -6,12 +6,17 @@ describe User do
 
   subject { @user }
 
+  # Attributes
   it { should respond_to :first_name }
   it { should respond_to :last_name }
   it { should respond_to :phone }
   it { should respond_to :googlecalid }
   it { should respond_to :outlookid }
+  it { should respond_to :events }
+  it { should be_valid }
 
+
+  # Validations
   describe "validations" do
     describe "should limit first_name" do
       before { @user.first_name = "a" * 41 }
@@ -28,4 +33,5 @@ describe User do
       it { should_not be_valid }
     end
   end
+
 end

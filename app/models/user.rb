@@ -13,5 +13,7 @@ class User < ActiveRecord::Base
 
   validates :first_name, :length => { :maximum => 40 }
   validates :last_name, :length => { :maximum => 40 }
-  validates :phone, :format => { :with => @phone_regex }
+  validates :phone, :allow_nil => true, :format => { :with => @phone_regex }
+
+  has_many :events, :foreign_key => "owner_id"
 end

@@ -1,7 +1,11 @@
 require 'spec_helper'
 
 describe Event do
-  before { @event = Event.new(:date => Time.now, :location => "foo", :title => "bar", :description => "foobar", :repeat => false, :all_day => false ) }
+
+  let(:user) { FactoryGirl.create(:user) }
+  before do
+    @event = user.events.new(:date => Time.now, :location => "foo", :title => "bar", :description => "foobar", :repeat => false, :all_day => false)
+  end
 
   subject { @event }
 
@@ -13,6 +17,9 @@ describe Event do
   it { should respond_to :repeat }
   it { should respond_to :all_day }
   it { should respond_to :owner_id }
+  it { should respond_to :user }
+  it { should be_valid }
+
 
   # Validations
   describe "owner validations" do
@@ -46,18 +53,18 @@ describe Event do
     end
   end
 
-  describe "repeat validations" do
-    describe "it must be a boolean" do
-      before { @event.repeat = "not a boolean" }
-      it { should_not be_valid }
-    end
-  end
+#  describe "repeat validations" do
+#    describe "it must be a boolean" do
+#      before { @event.repeat = "not a boolean" }
+#      it { should_not be_valid }
+#    end
+#  end
+#
+#  describe "all_day validations" do
+#    describe "all_day must be a boolean" do
+#      before { @event.all_day = "not a boolean" }
+#      it { should_not be_valid }
+#    end
+#  end
 
-  describe "all_day validations" do
-    describe "all_day must be a boolean" do
-      before { @event.all_day = "not a boolean" }
-      it { should_not be_valid }
-    end
-  end
-  
 end

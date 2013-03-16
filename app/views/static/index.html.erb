@@ -1,4 +1,4 @@
 <h1>Welcome</h1>
 <p>Create an account or login to continue</p>
-<a href="/sign_in" class="btn btn-primary">Log In</a>
-<a href="/sign_up" class="btn btn-primary">Sign Up</a>
+<%= link_to "Log In", new_user_session_path, :class => "btn btn-primary" %>
+<%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-primary" %>

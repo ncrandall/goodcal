@@ -1,0 +1,21 @@
+<div class="navbar navbar-invserse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <ul class="nav">
+        <li><%= link_to "Home", "#"%></li>
+        <li><%= link_to "About", "#"%></li>
+        <li><%= link_to "Contact", "#"%></li>
+      </ul>
+      <span class="pull-right">
+        <ul class="nav">
+        <% if !signed_in? %>
+            <li><%= link_to "Sign In", new_user_session_path %></li>
+        <% else %>
+          <li><p class="navbar-text">Logged in as: <%= link_to current_user.email, users_show_path(current_user.id) %></a></li>
+          <li><%= link_to "Sign Out", destroy_user_session_path(current_user.id), :method => "DELETE" %> 
+        <% end %>
+        </ul>
+      </span>
+    </div>
+  </div>
+</div>

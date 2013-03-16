@@ -1,9 +1,13 @@
 Goodcal::Application.routes.draw do
+  get "users/show"
+
   devise_for :users
 
   root :to => 'static#index'
 
   resources :events
+
+  match 'users/:id' => 'users#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
